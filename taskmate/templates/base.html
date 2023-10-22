@@ -1,0 +1,14 @@
+{% block title %}{% endblock title %}
+<div>
+  <h1>DJANGO WELCOMES YOU - HEADER</h1>
+  <div>
+    <a href="{% url "toDoList" %}">To Do</a>
+    <a href="{% url "taskList" %}">Pending Tasks</a>
+    <a href="{% url "contactUs" %}">Contact Us</a>
+    <a href="{% url "aboutUs" %}">About Us</a>
+  </div>
+</div>
+{% block body_content %}{% endblock body_content %}
+<div>
+  <h1>THANK YOU - FOOTER</h1>
+</div>
