@@ -1,5 +1,13 @@
 {% extends "base.html" %} {% block title %}
 <title>To Do Page - Django</title>
 {% endblock title %} {% block body_content %}
-<h3>{{data}}</h3>
+<h3>{{welcome_text}}</h3>
+<div>
+  {% for obj in data %}
+  <ol>
+    {{obj.id}} - {{obj.task}} -
+    <code>{% if obj.status %} Done {% else %} Yet to be done{% endif %}</code>
+  </ol>
+  {% endfor %}
+</div>
 {% endblock body_content %}
