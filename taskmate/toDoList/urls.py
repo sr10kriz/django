@@ -3,6 +3,8 @@ from toDoList import views
 
 urlpatterns = [
     path('',views.toDoList,name='toDoList'),
+    path('deleteToDo/<todo_id>',views.deleteToDo,name='deleteToDo'),
+    path('editTodo/<todo_id>',views.editToDo,name='editToDo'),
     path('task/',views.taskList,name='taskList'),
     path('contact/',views.contactList,name='contactUs'),
     path('about/',views.aboutUs,name='aboutUs')

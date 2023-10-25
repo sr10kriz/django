@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}
+<title>To Do - Edit Page</title>
+{% endblock title %} {% block body_content %}
+<div>
+  <form method="POST">
+    {% csrf_token %}
+    <input name="task" type="text" value="{{data.task}}" />
+    <button type="submit">Update Todo</button>
+  </form>
+</div>
+{% endblock body_content %}
