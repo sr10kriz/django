@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from toDoList import views as toDoListViews
+from taskmate import views as taskmateViews
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("to-do-list/",include('toDoList.urls'))
+    path('',taskmateViews.home,name='home'),
+    path("to-do-list/",include('toDoList.urls')),
+    path('contact/',toDoListViews.contactList,name ='contactUs'),
+    path('about/',toDoListViews.aboutUs,name='aboutUs')
 ]

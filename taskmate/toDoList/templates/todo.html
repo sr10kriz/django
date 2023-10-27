@@ -29,12 +29,31 @@ security, without this post request with form wont work {% endcomment %}
       <td>{{obj.task}}</td>
       <td>
         <code
-          >{% if obj.status %} Done {% else %} Yet to be done{% endif %}</code
-        >
+          >{% if obj.status %} Done {% else %} Yet to be done{% endif %}</code>
       </td>
-      <td><a href="{% url "editToDo" obj.id %}">Edit</a> | <a href="{% url "deleteToDo" obj.id %}">Delete</a></td>
+      <td>
+        {% if obj.status %}
+          <a href="{% url "editToDo" obj.id %}">Edit</a> | <a href="{% url "deleteToDo" obj.id %}">Delete</a> | <a href="{% url "completeToDo" obj.id%}"> Mark as Incomplete </a></td>
+        {% else %}
+          <a href="{% url "editToDo" obj.id %}">Edit</a> | <a href="{% url "deleteToDo" obj.id %}">Delete</a> | <a href="{% url "completeToDo" obj.id%}"> Mark as Completed </a></td>
+        {% endif %}
+      </td>
     </tr>
     {% endfor %} {% endif %}
   </table>
 </div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+    {% if data.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{data.previous_page_number}}">{{data.previous_page_number}}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?page={{data.number}}">{{data.number}}</a></li>
+    {% if data.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{data.next_page_number}}">{{data.next_page_number}}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?page={{data.paginator.num_pages}}">Last</a></li> {% comment %} data.paginator.num_pages this means total no.of.pages, with the help of paginator we may able to calculate total no.of.pages {% endcomment %}
+  </ul>
+</nav>
 {% endblock body_content %}
+

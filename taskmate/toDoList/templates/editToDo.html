@@ -5,6 +5,7 @@
   <form method="POST">
     {% csrf_token %}
     <input name="task" type="text" value="{{data.task}}" />
+    <input type="hidden" name="status" value="{{data.id}}" />
     <button type="submit">Update Todo</button>
   </form>
 </div>
