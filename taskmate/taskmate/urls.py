@@ -22,6 +22,7 @@ from taskmate import views as taskmateViews
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('',taskmateViews.home,name='home'),
+    path('account/',include('usersApp.urls')),
     path("to-do-list/",include('toDoList.urls')),
     path('contact/',toDoListViews.contactList,name ='contactUs'),
     path('about/',toDoListViews.aboutUs,name='aboutUs')
