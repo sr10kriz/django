@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}
+{% extends "base.html" %} {% block title %} {% load crispy_forms_tags %}
 <title>Register with Taskmate!</title>
 {% endblock title %} {% block body_content %}
 
@@ -6,7 +6,7 @@
 {% if messages %} {% for x in messages %} {{x}} {% endfor %} {% endif %}
 <div class="container">
   <form method="POST">
-    {% csrf_token %} {{register_form.as_p}}
+    {% csrf_token %} {{register_form|crispy}}
     <button class="btn btn-success" type="submit">
       Register with Taskmate!
     </button>
@@ -15,4 +15,10 @@
 
 {% endblock body_content %} {% comment %} {{register_form}} - this is what we
 created instance for the django default form in views, here we utilize like
-this, why we use as_p - just for a better look! {% endcomment %}
+this, why we use register_form.as_p - just for a better look! {% endcomment %}
+{% comment %} to load crispy forms {% endcomment %} {% comment %} to work with
+crispy_forms - its a third-party packages see docs -
+https://pypi.org/project/crispy-bootstrap5/ {% endcomment %} {% comment %}
+{{register_form|crispy}} - this is how we apply crispy forms filter - remeber
+why we use | - use for filter option, if you want to apply any conditions to
+forms or may be other function, this is how we apply crispy {% endcomment %}
