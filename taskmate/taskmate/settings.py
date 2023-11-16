@@ -59,7 +59,9 @@ ROOT_URLCONF = "taskmate.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")], # to use base templates for the entire application, base templates from project root 
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates")
+        ],  # to use base templates for the entire application, base templates from project root
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -131,4 +133,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-LOGIN_REDIRECT_URL = 'toDoList' # its like a landing page, if login successfull we redirect users to specified urls here!, it will hit the toDoList views
+LOGIN_REDIRECT_URL = "toDoList"  # its like a landing page, if login successfull we redirect users to specified urls here!, it will hit the toDoList views
+
+LOGIN_URL = "login"  # this is for if non-authenticated user loggedin then the route redirects to this path
