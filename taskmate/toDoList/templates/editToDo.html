@@ -2,11 +2,18 @@
 <title>To Do - Edit Page</title>
 {% endblock title %} {% block body_content %}
 <div>
+  {% if data.user_id == request.user%}
   <form method="POST">
     {% csrf_token %}
     <input name="task" type="text" value="{{data.task}}" />
     <input type="hidden" name="status" value="{{data.id}}" />
     <button type="submit">Update Todo</button>
   </form>
+  {% else %}
+  <p>Your are not allowed to access this Location!</p>
+  {% endif%}
 </div>
-{% endblock body_content %}
+{% endblock body_content %} {% comment %} {% if data.user_id == request.user%}
+this check for only respective users only able to edit|delete are change their
+status of the tasks, this will be working fine if have particular template file,
+if not we need manage it with views {% endcomment %}
